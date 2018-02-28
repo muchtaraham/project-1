@@ -1,0 +1,3 @@
+rootProject.name = 'ess'
+
+include ':app'
