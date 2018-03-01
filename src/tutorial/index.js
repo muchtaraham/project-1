@@ -42,7 +42,7 @@ export default class extends Component {
     }
 
     const {navigate} = this.props.navigation;
-    // if (isFirstLaunch){
+    if (isFirstLaunch){
       return(
 
            <View style={{flex:1}}>
@@ -58,13 +58,13 @@ export default class extends Component {
 
                </Swiper>
 
-               <View style={styles.footer}><Button color="#FFF" title="Skip" onPress={() => navigate("Home", {})}/></View>
+               <View style={styles.footer}><Text style={{fontSize:15,color:"#FFF"}} onPress={() => navigate("Home", {})}>SKIP</Text></View>
            </View>
       )
-    // }else {
-    //   return (
-    //     <Home/>
-    //   )
-    // }
+    }else {
+      return (
+        <Home/>
+      )
+    }
   }
 }

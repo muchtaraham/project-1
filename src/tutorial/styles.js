@@ -16,6 +16,7 @@ export default {
       alignItems: "center",
       borderTopColor: "#FFF",
       borderStyle: "solid",
-        borderTopWidth: 1
+      borderTopWidth: 1,
+      padding:15
     }
 };
