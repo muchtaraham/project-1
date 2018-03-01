@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, Image, Button, Dimensions, Alert } from 'react-native';
-import { Navigation } from 'react-navigation';
+
 import Swiper from 'react-native-swiper'
 
-import checkIfFirstLaunch from './checkIfFirstLaunch';
+
 import styles from './styles'
-import Home from '../home/index'
+
 const {width} = Dimensions.get('window')
 
 const Tutorial = props => ( <View style={styles.container}>
@@ -25,24 +25,15 @@ export default class extends Component {
                   require('./slide/slide1.jpg'),
                   require('./slide/slide2.jpg'),
                   require('./slide/slide3.jpg')
-              ],
-              isFirstLaunch: false,
-              hasCheckedAsyncStorage: false,
+              ]
           }
       }
-  async componentWillMount() {
-    const isFirstLaunch = await checkIfFirstLaunch();
-    this.setState({ isFirstLaunch, hasCheckedAsyncStorage: true });
-  }
-  render() {
-    const { hasCheckedAsyncStorage, isFirstLaunch } = this.state;
 
-    if (!hasCheckedAsyncStorage) {
-      return null;
-    }
+  render() {
+
 
     const {navigate} = this.props.navigation;
-    if (isFirstLaunch){
+
       return(
 
            <View style={{flex:1}}>
@@ -58,13 +49,9 @@ export default class extends Component {
 
                </Swiper>
 
-               <View style={styles.footer}><Text style={{fontSize:15,color:"#FFF"}} onPress={() => navigate("Home", {})}>SKIP</Text></View>
+               <View style={styles.footer}><Text style={{fontSize:15,color:"#FFF"}} onPress={() => navigate("Login", {})}>SKIP</Text></View>
            </View>
       )
-    }else {
-      return (
-        <Home/>
-      )
-    }
+
   }
 }

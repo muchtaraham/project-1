@@ -1,17 +1,11 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React, { Component } from "react";
 
-import React, { Component } from 'react';
-import Tutorial from './tutorial/index';
 
-type Props = {};
-export default class Setup extends Component<Props> {
+import App from "./App";
+export default class Setup extends Component {
   render() {
     return (
-      <Tutorial />
+        <App />
     );
   }
 }
