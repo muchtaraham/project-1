@@ -11,6 +11,6 @@ export default {
   },
   labelbutton: {
     fontSize: 10,
-    color: "#005a99"
+    color: "#01589a"
   }
 };

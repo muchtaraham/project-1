@@ -1,6 +1,6 @@
 export default {
     container: {
-      backgroundColor: "#005a99",
+      backgroundColor: "#01589a",
         flex: 1,
         justifyContent: "center",
         alignItems: "center"
@@ -11,7 +11,7 @@ export default {
         resizeMode: "contain"
     },
     footer: {
-      backgroundColor: "#005a99",
+      backgroundColor: "#01589a",
       justifyContent: "center",
       alignItems: "center",
       borderTopColor: "#FFF",

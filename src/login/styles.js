@@ -13,7 +13,7 @@ export default {
   },
   button:{
     width: "100%",
-    backgroundColor: "#005a99",
+    backgroundColor: "#01589a",
     alignItems: "center",
     textAlign: "center",
     fontWeight: "bold",
@@ -35,7 +35,7 @@ export default {
     fontWeight: "bold"
   },
   textfield:{
-    color: "#005a99"
+    color: "#01589a"
   },
   textforgot:{
     color: "#A9A9A9",

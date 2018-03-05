@@ -38,7 +38,7 @@ import Home from "./home/index";
        }
        var InitialScreen = Splash;
        if (!isFirstLaunch) {
-         InitialScreen = Login;
+         InitialScreen = Home;
        }
        var AppNavigator = StackNavigator({
          InitialScreen: {screen: InitialScreen},
