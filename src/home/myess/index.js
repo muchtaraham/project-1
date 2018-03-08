@@ -11,6 +11,10 @@ import {
   View,
   TabHeading
 } from "native-base";
+import {StyleSheet, Platform} from "react-native";
+
+import stylesios from "./styles";
+import stylesandroid from "./stylesandroid";
 
 import Leave from "./leave.js";
 import Medical from "./medical.js";
@@ -19,16 +23,19 @@ import Permit from "./permit.js";
 import Reimburse from "./reimburse.js";
 export default class Myess extends Component {
   render() {
-
+    var styles = stylesandroid;
+    if (Platform.OS === 'ios') {
+      styles = stylesios;
+    }
     return (
-      <Content>
-      <Tabs>
+      <Container>
+      <Tabs style={styles.Tabs}>
         <Tab
           heading={
-            <TabHeading>
+            <TabHeading style={styles.TabHeading}>
             <View>
-              <Icon style={{alignSelf:"center", color: "#01589a"}} name="list-box" />
-              <Text style={{alignSelf:"center", color: "#01589a", fontSize: 12, top: -4}}>Permit</Text>
+              <Icon style={styles.iconColor} name="list-box" />
+              <Text style={styles.textTab}>Permit</Text>
               </View>
             </TabHeading>
           }
@@ -37,10 +44,10 @@ export default class Myess extends Component {
         </Tab>
         <Tab
           heading={
-            <TabHeading>
+            <TabHeading style={styles.TabHeading}>
             <View>
-              <Icon style={{alignSelf:"center", color: "#01589a"}} name="clock" />
-              <Text style={{alignSelf:"center", color: "#01589a", fontSize: 12, top: -4}}>Overtime</Text>
+              <Icon style={styles.iconColor} name="clock" />
+              <Text style={styles.textTab}>Overtime</Text>
               </View>
             </TabHeading>
           }
@@ -50,10 +57,10 @@ export default class Myess extends Component {
 
         <Tab
           heading={
-            <TabHeading>
+            <TabHeading style={styles.TabHeading}>
             <View>
-              <Icon style={{alignSelf:"center", color: "#01589a"}} name="calendar" />
-              <Text style={{alignSelf:"center", color: "#01589a", fontSize: 12, top: -4}}>Leave</Text>
+              <Icon style={styles.iconColor} name="calendar" />
+              <Text style={styles.textTab}>Leave</Text>
               </View>
             </TabHeading>
           }
@@ -62,10 +69,10 @@ export default class Myess extends Component {
         </Tab>
         <Tab
           heading={
-            <TabHeading>
+            <TabHeading style={styles.TabHeading}>
             <View>
-              <Icon style={{alignSelf:"center", color: "#01589a"}} name="medical" />
-              <Text style={{alignSelf:"center", color: "#01589a", fontSize: 12, top: -4}}>Medical</Text>
+              <Icon style={styles.iconColor} name="medical" />
+              <Text style={styles.textTab}>Medical</Text>
               </View>
             </TabHeading>
           }
@@ -74,10 +81,10 @@ export default class Myess extends Component {
         </Tab>
         <Tab
           heading={
-            <TabHeading>
+            <TabHeading style={styles.TabHeading}>
             <View>
-              <Icon style={{alignSelf:"center", color: "#01589a"}} name="cash" />
-              <Text style={{alignSelf:"center", color: "#01589a", fontSize: 12, top: -4}}>Reimburse</Text>
+              <Icon style={styles.iconColor} name="cash" />
+              <Text style={styles.textTab}>Reimburse</Text>
               </View>
             </TabHeading>
           }
@@ -85,7 +92,7 @@ export default class Myess extends Component {
           <Reimburse />
         </Tab>
       </Tabs>
-      </Content>
+      </Container>
     );
   }
 }

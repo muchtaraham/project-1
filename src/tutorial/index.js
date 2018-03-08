@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, Button, Dimensions, Alert } from 'react-native';
+import { View, Text, Image, Button, Dimensions, Alert, TouchableOpacity } from 'react-native';
 
 import Swiper from 'react-native-swiper'
 
@@ -48,8 +48,9 @@ export default class extends Component {
                }
 
                </Swiper>
-
-               <View style={styles.footer}><Text style={{fontSize:15,color:"#FFF"}} onPress={() => navigate("Login", {})}>SKIP</Text></View>
+               <TouchableOpacity onPress={() => navigate("Login", {})} style={{width:'100%'}}>
+               <View style={styles.footer}><Text style={{fontSize:15,color:"#FFF"}}>SKIP</Text></View>
+               </TouchableOpacity>
            </View>
       )
 

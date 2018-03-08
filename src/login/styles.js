@@ -7,9 +7,8 @@ export default {
     paddingRight: 20
   },
   image: {
-    width: "70%",
-    resizeMode: "contain",
-    top:50
+    width: "100%",
+    resizeMode: "contain"
   },
   button:{
     width: "100%",

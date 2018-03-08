@@ -9,21 +9,37 @@ import {
 
 import {
   Image,
-  Alert
+  Alert,
+  Platform
 } from "react-native";
-import styles from "./styles";
-export default class Home extends Component {
+
+
+import stylesios from "./styles";
+import stylesandroid from "./stylesandroid";
+import Home from "../index";
+import { StackNavigator, Navigation } from "react-navigation";
+export default class Dashboard extends Component {
+  static navigationOptions = {
+    title: ''
+  };
   render() {
+    var styles = stylesandroid;
+    if (Platform.OS === 'ios') {
+      styles = stylesios;
+    }
+
+
+
     return (
 
           <Content style={{backgroundColor: "#f7f7f7"}}>
           <Image
             style={styles.imageatas}
-            source={require('../../tutorial/slide/slide1.jpg')}
+            source={require('../bg.jpg')}
           />
           <Image
           style={styles.imageprofile}
-            source={require('../../tutorial/slide/slide1.jpg')}
+            source={require('./user.jpg')}
           />
           <Text style={styles.profileName}>Aris Sudaryanto</Text>
           <Text style={styles.profileTitle}>M1020 / Software Engineer</Text>
@@ -97,12 +113,6 @@ export default class Home extends Component {
           </View>
           </View>
           </Content>
-
-
-
-
-
-
     );
   }
 }

@@ -43,18 +43,18 @@ export default class ForgotPassword extends Component {
     return(
       <ScrollView style={{backgroundColor: "#FFF"}}>
         <View style={styles.wrapper}>
-          <View style={{alignItems: 'center'}}>
+
             <Image
               style={styles.image}
               source={require('./klola.jpg')}
            />
-           </View>
+           <View style={{marginTop:-100}}>
            <TextField style={styles.textfield} error={this.state.erroremail} label='Email' value={email} onChangeText={ this.changeemail }/>
            <Text style={styles.textforgot}>We will send you an emailwith further instructions to reset your password</Text>
            <Text style={styles.button} onPress={this.submitLogin}>SEND</Text>
 
            <Text style={styles.buttonwhite} onPress={() => navigate("Login")}><Text style={{fontSize: 15}}>Back to Login</Text></Text>
-
+           </View>
          </View>
 
 

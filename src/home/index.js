@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {StyleSheet} from "react-native";
+import {StyleSheet, Platform, Dimensions} from "react-native";
 import {
   Container,
   Header,
@@ -12,15 +12,15 @@ import {
   Body,
   Left,
   Right,
-  Icon,
-  View
+  Icon
 } from "native-base";
 
-import {
-  Image
-} from "react-native";
-import styles from "./styles";
 
+import {
+  Image, StatusBar, View, Alert
+} from "react-native";
+import stylesios from "./styles";
+import stylesandroid from "./stylesandroid";
 import Dashboard from "./dashboard/index";
 import Epayslip from "./epayslip/index";
 import Account from "./myaccount/index";
@@ -28,6 +28,9 @@ import Myess from "./myess/index";
 
 
 class Home extends Component {
+  static navigationOptions = {
+    title: 'Home'
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -36,8 +39,7 @@ class Home extends Component {
       tab3: false,
       tab4: false,
       page: <Dashboard/>,
-      title: "Dashboard",
-      heightgambar: 63
+      title: "Dashboard"
     };
   }
   toggleTab1() {
@@ -47,8 +49,7 @@ class Home extends Component {
       tab3: false,
       tab4: false,
       page: <Dashboard/>,
-      title: "Dashboard",
-      heightgambar: 63
+      title: "Dashboard"
     });
   }
   toggleTab2() {
@@ -58,8 +59,7 @@ class Home extends Component {
       tab3: false,
       tab4: false,
       page: <Myess/>,
-      title: "My ESS",
-      heightgambar: 63
+      title: "My ESS"
     });
   }
   toggleTab3() {
@@ -69,8 +69,7 @@ class Home extends Component {
       tab3: true,
       tab4: false,
       page: <Epayslip/>,
-      title: "E-Payslip",
-      heightgambar: 63
+      title: "E-Payslip"
     });
   }
   toggleTab4() {
@@ -80,25 +79,35 @@ class Home extends Component {
       tab3: false,
       tab4: true,
       page: <Account/>,
-      title: "My Account",
-      heightgambar: 63
+      title: "My Account"
     });
   }
   render() {
 
+    let h = Platform.OS === 'ios' ? 63 :  56;
+
+    var styles = stylesandroid;
+    if (Platform.OS === 'ios') {
+      styles = stylesios;
+    }
+    var {height, width} = Dimensions.get('window');
+
+
+
     return (
+
       <Container style={styles.container}>
 
           <Image
-            style={{height:this.state.heightgambar, position: 'absolute', top: 0, left: 0}}
-            source={require('../tutorial/slide/slide1.jpg')}
+            style={{height:h, position: 'absolute', top: 0, left: 0}}
+            source={require('./header.jpg')}
           />
-          <Header style={{ backgroundColor: 'transparent' }}>
-            <Left/>
-            <Body>
-              <Title style={{color: "white"}}>{this.state.title}</Title>
+          <Header style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent' }}>
+
+            <Body style={{justifyContent: 'center', alignItems: 'center'}}>
+              <Title style={{color: "white",fontWeight: "300" }}>{this.state.title}</Title>
             </Body>
-            <Right />
+
           </Header>
 
 
@@ -109,25 +118,28 @@ class Home extends Component {
           <FooterTab>
             <Button active={this.state.tab1} onPress={() => this.toggleTab1()}>
               <Icon style={{color: "#01589a"}} active={this.state.tab1} name="home" />
-              <Text style={styles.labelbutton}>Home</Text>
+              {width >= 360 ? <Text style={styles.labelbutton}>Home</Text> : null }
             </Button>
             <Button active={this.state.tab2} onPress={() => this.toggleTab2()}>
               <Icon style={{color: "#01589a"}} active={this.state.tab2} name="paper" />
-              <Text style={styles.labelbutton}>My ESS</Text>
+              {width >= 360 ? <Text style={styles.labelbutton}>My ESS</Text> : null }
             </Button>
             <Button active={this.state.tab3} onPress={() => this.toggleTab3()}>
               <Icon style={{color: "#01589a"}} active={this.state.tab3} name="cash" />
-              <Text style={styles.labelbutton}>E-Payslip</Text>
+              {width >= 360 ? <Text style={styles.labelbutton}>E-Payslip</Text> : null }
             </Button>
             <Button active={this.state.tab4} onPress={() => this.toggleTab4()}>
-              <Icon style={{color: "#01589a"}} active={this.state.tab4} name="person" />
-              <Text style={styles.labelbutton}>My Account</Text>
+              <Icon style={{color: "#01589a"}} active={this.state.tab4} name="ios-person-outline" />
+              {width >= 360 ? <Text style={styles.labelbutton}>My Account</Text> : null }
             </Button>
           </FooterTab>
         </Footer>
       </Container>
     );
   }
+
+
+
 }
 
 export default Home;

@@ -64,18 +64,18 @@ export default class Login extends Component {
     return(
       <ScrollView style={{backgroundColor: "#FFF"}}>
         <View style={styles.wrapper}>
-          <View style={{alignItems: 'center'}}>
+
             <Image
               style={styles.image}
               source={require('./klola.jpg')}
            />
-           </View>
+           <View style={{marginTop:-100}}>
            <TextField style={styles.textfield} error={this.state.errorusername} label='Username' value={username} onChangeText={ this.changeusername }/>
            <PasswordInputText style={styles.textfield} error={this.state.errorpassword} label='Password' value={password} onChangeText={ this.changepassword }/>
            <Text style={styles.button} onPress={this.submitLogin}>LOGIN</Text>
            <Text style={styles.buttonwhite} onPress={() => alert("yo")}>Login with QR Code? <Text style={styles.textbold}>Please Scan QR</Text></Text>
            <Text style={styles.buttonwhite} onPress={() => navigate("ForgotPassword", {})}><Text style={{fontSize: 15}}>Forgot Password?</Text></Text>
-
+           </View>
          </View>
 
 

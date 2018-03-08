@@ -7,6 +7,7 @@ import Splash from "./tutorial/index";
 import Login from "./login/index";
 import Forgot from "./login/forgotpassword";
 import Home from "./home/index";
+import PermitHistory from "./home/myess/permithistory.js";
 
 
  //
@@ -38,13 +39,14 @@ import Home from "./home/index";
        }
        var InitialScreen = Splash;
        if (!isFirstLaunch) {
-         InitialScreen = Home;
+         InitialScreen = Login;
        }
        var AppNavigator = StackNavigator({
          InitialScreen: {screen: InitialScreen},
          Login: {screen: Login},
          ForgotPassword: {screen: Forgot},
-         Home: {screen: Home}
+         Home: {screen: Home},
+         PermitHistory: {screen: PermitHistory}
        },
        {
          headerMode: 'none',
@@ -52,6 +54,7 @@ import Home from "./home/index";
            headerVisible: false,
          }
         });
+
 
        return <Root>
          <AppNavigator />
