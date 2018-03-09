@@ -4,7 +4,8 @@ import {
   View,
   Text,
   Button,
-  Icon
+  Icon,
+  Badge
 } from "native-base";
 
 import {
@@ -17,11 +18,15 @@ import {
 import stylesios from "./styles";
 import stylesandroid from "./stylesandroid";
 import Home from "../index";
-import { StackNavigator, Navigation } from "react-navigation";
+import { StackNavigator, Navigation, NavigationActions } from "react-navigation";
+
+
 export default class Dashboard extends Component {
   static navigationOptions = {
     title: ''
   };
+
+
   render() {
     var styles = stylesandroid;
     if (Platform.OS === 'ios') {
@@ -45,19 +50,19 @@ export default class Dashboard extends Component {
           <Text style={styles.profileTitle}>M1020 / Software Engineer</Text>
           <View style={styles.wrapper}>
             <View style={styles.container}>
-                <Button style={styles.box}>
+                <Button style={styles.box} onPress={() => this.props.navigation.navigate("Applypermit")}>
                 <View>
                   <Icon style={{alignSelf:"center", color: "#01589a"}} name="list-box" />
                   <Text style={{alignSelf:"center", color: "#01589a", fontSize: 14}}>Permit</Text>
                   </View>
                 </Button>
-                <Button style={styles.box}>
+                <Button style={styles.box} onPress={() => this.props.navigation.navigate("Applyovertime")}>
                 <View>
                   <Icon style={{alignSelf:"center", color: "#01589a"}} name="clock" />
                   <Text style={{alignSelf:"center", color: "#01589a", fontSize: 14}}>Overtime</Text>
                   </View>
                   </Button>
-                <Button style={styles.box}>
+                <Button style={styles.box} onPress={() => this.props.navigation.navigate("Applyleave")}>
                 <View>
                   <Icon style={{alignSelf:"center", color: "#01589a"}} name="calendar" />
                   <Text style={{alignSelf:"center", color: "#01589a", fontSize: 14}}>Leave</Text>
@@ -65,21 +70,23 @@ export default class Dashboard extends Component {
                   </Button>
             </View>
             <View style={styles.container}>
-                <Button style={styles.box}>
+                <Button style={styles.box} onPress={() => this.props.navigation.navigate("Applymedical")}>
                 <View>
                   <Icon style={{alignSelf:"center", color: "#01589a"}} name="medical" />
                   <Text style={{alignSelf:"center", color: "#01589a", fontSize: 14}}>Medical</Text>
                   </View>
                   </Button>
-                <Button style={styles.box}>
+                <Button style={styles.box} onPress={() => this.props.navigation.navigate("Applyreimburse")}>
                 <View>
                   <Icon style={{alignSelf:"center", color: "#01589a"}} name="cash" />
                   <Text style={{alignSelf:"center", color: "#01589a", fontSize: 14}}>Reimburse</Text>
                   </View>
                   </Button>
-                <Button style={styles.box}>
+                <Button style={styles.box} onPress={() => this.props.navigation.navigate("Approval")}>
                 <View>
-                  <View style={styles.backgroundRoundRed}><Text style={{alignSelf:"center",fontSize:10, color: 'white', fontWeight: 'bold'}}>8</Text></View>
+                <Badge style={styles.backgroundRoundRed}>
+                  <Text>2</Text>
+                </Badge>
                   <Icon style={{alignSelf:"center", color: "#01589a"}} name="checkmark-circle" />
                   <Text style={{alignSelf:"center", color: "#01589a", fontSize: 14}}>Approval</Text>
                   </View>

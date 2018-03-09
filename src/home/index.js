@@ -38,7 +38,7 @@ class Home extends Component {
       tab2: false,
       tab3: false,
       tab4: false,
-      page: <Dashboard/>,
+      page: <Dashboard  navigation={this.props.navigation} />,
       title: "Dashboard"
     };
   }
@@ -48,7 +48,7 @@ class Home extends Component {
       tab2: false,
       tab3: false,
       tab4: false,
-      page: <Dashboard/>,
+      page: <Dashboard navigation={this.props.navigation} />,
       title: "Dashboard"
     });
   }
@@ -58,7 +58,7 @@ class Home extends Component {
       tab2: true,
       tab3: false,
       tab4: false,
-      page: <Myess/>,
+      page: <Myess navigation={this.props.navigation} />,
       title: "My ESS"
     });
   }
@@ -68,7 +68,7 @@ class Home extends Component {
       tab2: false,
       tab3: true,
       tab4: false,
-      page: <Epayslip/>,
+      page: <Epayslip navigation={this.props.navigation} />,
       title: "E-Payslip"
     });
   }
@@ -78,10 +78,15 @@ class Home extends Component {
       tab2: false,
       tab3: false,
       tab4: true,
-      page: <Account/>,
+      page: <Account navigation={this.props.navigation} />,
       title: "My Account"
     });
   }
+
+  cek(){
+    alert("ko");
+  }
+
   render() {
 
     let h = Platform.OS === 'ios' ? 63 :  56;
@@ -105,6 +110,7 @@ class Home extends Component {
           <Header style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent' }}>
 
             <Body style={{justifyContent: 'center', alignItems: 'center'}}>
+
               <Title style={{color: "white",fontWeight: "300" }}>{this.state.title}</Title>
             </Body>
 

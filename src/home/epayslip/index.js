@@ -1,21 +1,37 @@
 import React, { Component } from "react";
 import { Content, Card, CardItem, Text, Body, Icon, Button } from "native-base";
-import {Platform, View, Alert} from "react-native";
+import {Platform, View, Alert, TouchableOpacity, TextInput} from "react-native";
 
 import stylesios from "../myess/styles";
 import stylesandroid from "../myess/stylesandroid";
+import PopupDialog from 'react-native-popup-dialog';
 export default class Epayslip extends Component {
   constructor(){
 
-  super();
+    super();
 
-  this.state ={
+    this.state ={
 
-    status:[],
-    bulan: 'JAN'
+      status:[],
+      bulan: 'JAN'
 
+    }
   }
-}
+
+  _showEpayslipMenu = (i) => {
+
+    Alert.alert(
+      'E-Payslip',
+      '',
+      [
+        {text: 'View E-Payslip', onPress: () => {this.popupDialog.show()}},
+        {text: 'Download', onPress: () => console.log('Cancel Pressed')},
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+
+      ],
+      { cancelable: false }
+    )
+  }
 
   render() {
     var styles = stylesandroid;
@@ -24,7 +40,7 @@ export default class Epayslip extends Component {
     }
 
 
-    var permit = [];
+    var epayslip = [];
     var listdetail = [];
     var show = [];
 
@@ -43,9 +59,10 @@ export default class Epayslip extends Component {
     }
   	for(let i = 2017; i > 2015; i--){
 
-  		permit.push(
+  		epayslip.push(
         <View  key={i}>
         <Card>
+        <TouchableOpacity  onPress={() => ShowHideTextComponentView(i)}>
         <CardItem>
           <Body>
           {this.state.status[i] ?
@@ -64,6 +81,7 @@ export default class Epayslip extends Component {
 
           </Body>
         </CardItem>
+        </TouchableOpacity>
 
         </Card>
         {this.state.status[i] ? <View style={{marginTop:5, marginBottom: 5}}>{listdetail}</View>: null }
@@ -113,7 +131,7 @@ export default class Epayslip extends Component {
         <CardItem>
           <Body>
             <View style={styles.buttonRight}>
-              <Icon style={{color:'grey'}} name="ios-more"/>
+              <Icon onPress={() => this._showEpayslipMenu(i)} style={{color:'grey'}} name="ios-more"/>
             </View>
             <View style={styles.buttonLeft}>
               <Text>{bul}</Text>
@@ -135,7 +153,34 @@ export default class Epayslip extends Component {
 
     return (
       <Content style={{backgroundColor:'#f0eff5'}}>
-        { permit }
+        { epayslip }
+
+        <PopupDialog
+            ref={(popupDialog) => { this.popupDialog = popupDialog; }}
+            height={200}
+            width={300}
+          >
+          <View style={styles.wrapper}>
+              <View style={{padding:15, borderBottomWidth:1,borderColor:'grey'}}>
+                <Text style={{fontSize:12,color:'grey',fontWeight:'bold'}}>Password E-Payslip</Text>
+              </View>
+              <View style={{padding:15}}>
+                <View style={{borderColor: '#CDCDCD',borderWidth: 1,borderRadius: 2}}>
+                <TextInput
+                  placeholder="Enter Password E-Payslip"
+                  style={{height:30}}
+                />
+                </View>
+
+                <Button full small style={{backgroundColor:'#ffaa00',marginTop:10}} onPress={() => this.props.navigation.navigate("DetailEpayslip")}>
+                  <Text>SUBMIT</Text>
+                </Button>
+                <Button full small style={{backgroundColor:'#EFEFEF',marginTop:10}} onPress={() => this.popupDialog.dismiss()}>
+                  <Text style={{color:'#01589a'}}>CANCEL</Text>
+                </Button>
+              </View>
+            </View>
+          </PopupDialog>
       </Content>
     );
   }

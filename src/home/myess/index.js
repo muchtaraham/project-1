@@ -40,7 +40,7 @@ export default class Myess extends Component {
             </TabHeading>
           }
         >
-          <Permit />
+          <Permit  navigation={this.props.navigation}/>
         </Tab>
         <Tab
           heading={
@@ -52,7 +52,7 @@ export default class Myess extends Component {
             </TabHeading>
           }
         >
-          <Overtime />
+          <Overtime navigation={this.props.navigation}/>
         </Tab>
 
         <Tab
@@ -65,7 +65,7 @@ export default class Myess extends Component {
             </TabHeading>
           }
         >
-          <Leave />
+          <Leave  navigation={this.props.navigation}/>
         </Tab>
         <Tab
           heading={
@@ -77,7 +77,7 @@ export default class Myess extends Component {
             </TabHeading>
           }
         >
-          <Medical />
+          <Medical  navigation={this.props.navigation}/>
         </Tab>
         <Tab
           heading={
@@ -89,7 +89,7 @@ export default class Myess extends Component {
             </TabHeading>
           }
         >
-          <Reimburse />
+          <Reimburse  navigation={this.props.navigation}/>
         </Tab>
       </Tabs>
       </Container>

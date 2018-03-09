@@ -54,7 +54,7 @@ export default {
     borderRadius: 5,
     backgroundColor: '#FFF',
         borderColor: "red",
-        borderWidth: .5,
+        borderWidth: 1,
         borderStyle: "solid",
   },
   buttonEdit: {
@@ -65,7 +65,7 @@ export default {
     borderRadius: 5,
     backgroundColor: '#FFF',
         borderColor: "#01589a",
-        borderWidth: .5,
+        borderWidth: 1,
         borderStyle: "solid",
   }
 };

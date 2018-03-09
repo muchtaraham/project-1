@@ -91,16 +91,23 @@ export default class Leave extends Component {
     return (
       <Content style={{backgroundColor:'#f0eff5'}}>
         { leave }
-        <View  style={{backgroundColor:"#FFF",marginTop:10}}>
-          <ListItem>
-            <Left>
-              <Text style={[styles.cardText]}>Leave History</Text>
-            </Left>
-            <Right>
-              <Icon active name="arrow-forward" />
-            </Right>
-          </ListItem>
-        </View>
+        <Card>
+          <CardItem>
+          <Body>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate("HistoryLeave")} style={{width:'100%'}}>
+          <View style={styles.buttonRight}>
+            <Icon style={{color:'grey', marginTop:-5}} name="ios-arrow-forward"/>
+          </View>
+          <View>
+            <Text style={styles.cardText}>
+            Leave History
+            </Text>
+          </View>
+
+        </TouchableOpacity>
+        </Body>
+      </CardItem>
+      </Card>
       </Content>
     );
   }
